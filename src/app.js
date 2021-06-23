@@ -36,7 +36,7 @@ app.get('/about', (req,res) =>{
 app.get('/help', (req,res) =>{
     res.render('help', {
         title: 'HELP PAGE',
-        middle: 'This is the help page. ',
+        middle: 'If you want help just shout out "TULONG"',
         name: 'Bryan Joe Haboc'
     })
 })

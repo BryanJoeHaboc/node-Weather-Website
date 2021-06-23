@@ -34,9 +34,18 @@ const weatherUpdate = (latitude,longitude,callback) => {
         } else {
             const {weather_descriptions: weatherDescript, temperature:currentTemp, feelslike: feelsLikeTemp } = body.current;
             const {name: nameOfPlace, region, country} = body.location;
+            let emoji = '';
+            if (feelsLikeTemp >= 30) {
+                emoji = `🥵🔥🥵`
+            } else if (feelsLikeTemp < 30 && feelsLikeTemp >= 15){
+                emoji = '😎🆒😎'
+            } else  {
+                emoji = '🥶🧊🥶'
+            }
+
             callback(undefined, {
                 location: `${nameOfPlace}, ${region} ${country}`,
-                forecast: `${weatherDescript[0]}. The temperature for today ${currentTemp} and it feels like ${feelsLikeTemp}`
+                forecast: `${weatherDescript[0]}. The temperature for today is ${currentTemp}°C and it feels like ${feelsLikeTemp}°C ${emoji}`
             });
         }
     })
